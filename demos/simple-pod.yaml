@@ -1,11 +1,9 @@
+# Deployment manifest for a single pod/echo-server
 apiVersion: v1
 kind: Pod
 metadata:
-  name: nginx
+  name: simple-pod
 spec:
   containers:
-  - name: nginx
-    image: nginx:1.14.2
-    resources: {}
-    ports:
-    - containerPort: 80
+    - image: kicbase/echo-server:1.0
+      name: echo-server

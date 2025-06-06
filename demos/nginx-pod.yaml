@@ -1,0 +1,12 @@
+# Deployment manifest for a single pod/nginx
+apiVersion: v1
+kind: Pod
+metadata:
+  name: simple-pod
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.14.2
+    resources: {}
+    ports:
+    - containerPort: 80

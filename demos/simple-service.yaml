@@ -6,12 +6,12 @@ metadata:
   name: simple-deployment
 spec:
   ports:
-  - nodePort: 31213
-    port: 8080
+  # Could hard-code the nodePort, as in the line below.
+  # Or skip to let kubernetes decide on the nodePort
+  # - nodePort: 32663
+  - port: 8080
     protocol: TCP
     targetPort: 8080
   selector:
     app: simple-deployment
   type: LoadBalancer
-status:
-  loadBalancer: {}

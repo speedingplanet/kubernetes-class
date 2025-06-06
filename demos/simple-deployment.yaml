@@ -1,10 +1,17 @@
+# Deployment manifest for a deployment
+# spec.template uses the same config as in simple-pod.yaml, in the same folder
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
     app: simple-deployment
+    version: "1"
+    release: alpha
+    client: northwestern-mutual
+    foo: bar
   name: simple-deployment
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: simple-deployment
@@ -14,6 +21,6 @@ spec:
         app: simple-deployment
     spec:
       containers:
-      - image: kicbase/echo-server:1.0
-        name: echo-server
-        resources: {}
+        - image: kicbase/echo-server:1.0
+          name: echo-server
+          resources: {}
