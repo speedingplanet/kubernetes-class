@@ -1,0 +1,27 @@
+# Deployment manifest for a deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: app-label
+    version: "1"
+    release: alpha
+    client: northwestern-mutual
+    foo: bar
+  name: labels-vs-names
+spec:
+  replicas: 1
+  # It must match the pod template's labels.
+  selector:
+    matchLabels:
+      pod-template-name: lvn-template
+  template: # The template for the pod for this deployment
+    metadata:
+      # May match selectors of replication controllers and services
+      labels:
+        pod-template-name: lvn-template
+    spec:
+      containers:
+        - image: kicbase/echo-server:1.0
+          name: echo-server
+          resources: {}
