@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+labels:
+  - includeSelectors: true
+    pairs:
+      app: kustom-deployment
+resources:
+  - kustom-deployment.yaml
+  - kustom-service.yaml
+configMapGenerator:
+  - name: kustom-deployment-map
+    literals:
+      - KEY=value
