@@ -48,6 +48,10 @@ Get information about a resource or resources
 
 ### explain
 
+### apply
+
+### delete
+
 ### General commands
 
 - `kubectl api-resources` list all resource types in Kubernetes
