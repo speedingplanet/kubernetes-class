@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: folder-deployment
+  name: folder-deployment
+spec:
+  selector:
+    matchLabels:
+      app: folder-deployment
+  template: # The template for the pod for this deployment
+    metadata:
+      labels:
+        app: folder-deployment
+    spec:
+      containers:
+      - image: kicbase/echo-server:1.0
+        name: echo-server
+        resources: {}
