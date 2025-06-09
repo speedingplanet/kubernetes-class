@@ -11,6 +11,7 @@ spec:
     args:
     - liveness
     livenessProbe:
+    # Based on HTTP response code, 200-399 is success
       httpGet:
         path: /healthz
         port: 8080
@@ -19,3 +20,4 @@ spec:
           value: Awesome
       initialDelaySeconds: 3
       periodSeconds: 3
+      failureThreshold: 5

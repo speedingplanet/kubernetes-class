@@ -13,23 +13,29 @@ spec:
         - -c
         - touch /tmp/healthy; sleep 30; rm -f /tmp/healthy; sleep 600
       startupProbe:
+        # Restart on failure
         exec:
           command:
             - cat
             - /tmp/healthy
         initialDelaySeconds: 2
         periodSeconds: 3
+        failureThreshold: 3
       livenessProbe:
+        # Restart on failure
         exec:
           command:
             - cat
             - /tmp/healthy
         initialDelaySeconds: 5
         periodSeconds: 5
+        failureThreshold: 3
       readinessProbe:
+        # Removed from matching services, can rejoin
         exec:
           command:
             - cat
             - /tmp/healthy
         initialDelaySeconds: 5
         periodSeconds: 5
+        failureThreshold: 3

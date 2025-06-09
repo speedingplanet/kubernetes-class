@@ -5,7 +5,7 @@ metadata:
   labels:
     app: nginx
 spec:
-  replicas: 3
+  replicas: 10
   selector:
     matchLabels:
       app: nginx
@@ -15,7 +15,16 @@ spec:
         app: nginx
     spec:
       containers:
-      - name: nginx
-        image: nginx:1.14.2
-        ports:
-        - containerPort: 80
+        - name: nginx
+          image: nginx:1.17
+          ports:
+            - containerPort: 80
+  strategy:
+    # Only alternative is "Recreate"
+    type: RollingUpdate
+    # These values can also be percentages
+    rollingUpdate:
+      # As many as 14
+      maxSurge: 4
+      # As few as 7
+      maxUnavailable: 3
